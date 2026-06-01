@@ -19,6 +19,10 @@
   "paths": {
     "/recipes/": {
       "get": {
+        "tags": [
+          "Recipes"
+        ],
+        "summary": "Get all recipes",
         "description": "",
         "responses": {
           "200": {
@@ -30,37 +34,51 @@
         }
       },
       "post": {
+        "tags": [
+          "Recipes"
+        ],
+        "summary": "Create a new recipe",
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "title": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Spaghetti Carbonara"
                 },
                 "description": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "A classic Italian pasta dish with eggs and cheese."
                 },
                 "category": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Dinner"
                 },
                 "prepTimeMinutes": {
-                  "example": "any"
+                  "type": "number",
+                  "example": 10
                 },
                 "cookTimeMinutes": {
-                  "example": "any"
+                  "type": "number",
+                  "example": 20
                 },
                 "servings": {
-                  "example": "any"
+                  "type": "number",
+                  "example": 2
                 },
                 "instructions": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "1. Cook pasta. 2. Fry pancetta. 3. Mix eggs and cheese. 4. Combine all."
                 },
                 "ingredientIds": {
-                  "example": "any"
+                  "type": "array",
+                  "example": [],
+                  "items": {}
                 }
               }
             }
@@ -81,6 +99,10 @@
     },
     "/recipes/{id}": {
       "get": {
+        "tags": [
+          "Recipes"
+        ],
+        "summary": "Get a recipe by ID",
         "description": "",
         "parameters": [
           {
@@ -106,6 +128,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Recipes"
+        ],
+        "summary": "Update a recipe by ID",
         "description": "",
         "parameters": [
           {
@@ -113,6 +139,28 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Garlic Chicken Stir Fry Updated"
+                },
+                "servings": {
+                  "type": "number",
+                  "example": 4
+                },
+                "prepTimeMinutes": {
+                  "type": "number",
+                  "example": 15
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -131,6 +179,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "Recipes"
+        ],
+        "summary": "Delete a recipe by ID",
         "description": "",
         "parameters": [
           {
@@ -158,6 +210,10 @@
     },
     "/ingredients/": {
       "get": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "Get all ingredients",
         "description": "",
         "responses": {
           "200": {
@@ -169,22 +225,30 @@
         }
       },
       "post": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "Create a new ingredient",
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Parmesan Cheese"
                 },
                 "unit": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "grams"
                 },
                 "calories": {
-                  "example": "any"
+                  "type": "number",
+                  "example": 431
                 }
               }
             }
@@ -208,6 +272,10 @@
     },
     "/ingredients/{id}": {
       "get": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "Get an ingredient by ID",
         "description": "",
         "parameters": [
           {
@@ -233,6 +301,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "Update an ingredient by ID",
         "description": "",
         "parameters": [
           {
@@ -240,6 +312,28 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Eggs"
+                },
+                "unit": {
+                  "type": "string",
+                  "example": "units"
+                },
+                "calories": {
+                  "type": "number",
+                  "example": 80
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -258,6 +352,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "Ingredients"
+        ],
+        "summary": "Delete an ingredient by ID",
         "description": "",
         "parameters": [
           {
