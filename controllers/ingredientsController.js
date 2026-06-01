@@ -105,7 +105,6 @@ const updateIngredient = async (req, res) => {
         .status(400)
         .json({ error: "Validation failed", details: errors });
     }
-    const db = getDb().db("RecipesBook");
     const result = await db
       .collection("ingredients")
       .findOneAndUpdate(
@@ -113,10 +112,11 @@ const updateIngredient = async (req, res) => {
         { $set: { ...req.body, updatedAt: new Date() } },
         { returnDocument: "after" },
       );
-    if (!result) {
+
+    if (!result || !result.value) {
       return res.status(404).json({ error: "Ingredient not found" });
     }
-    res.status(200).json(result);
+    res.status(200).json(result.value);
   } catch (err) {
     res
       .status(500)
