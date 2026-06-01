@@ -1,0 +1,75 @@
+### Get All Recipes
+GET http://localhost:3000/recipes
+
+### Get Recipe by ID
+GET http://localhost:3000/recipes/6a1b76d2e1b66a59abf8ad39
+
+### Create Recipe
+POST http://localhost:3000/recipes
+Content-Type: application/json
+
+{
+  "title": "Spaghetti Carbonara",
+  "description": "A classic Italian pasta dish with eggs and cheese.",
+  "category": "Dinner",
+  "prepTimeMinutes": 10,
+  "cookTimeMinutes": 20,
+  "servings": 2,
+  "instructions": "1. Cook pasta. 2. Fry pancetta. 3. Mix eggs and cheese. 4. Combine all ingredients.",
+  "ingredientIds": [
+    "6a1b76afe1b66a59abf8ad31",
+    "6a1b76afe1b66a59abf8ad35"]
+}
+
+### Update Recipe
+PUT http://localhost:3000/recipes/6a1b76d2e1b66a59abf8ad39
+Content-Type: application/json
+
+{
+  "title": "Classic Margherita Pizza Upgrade: ",
+    "description": "A simple and delicious Italian pizza with fresh ingredients.",
+    "category": "Dinner",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 15,
+    "servings": 6,
+    "instructions": "1. Preheat oven to 475F. 2. Roll out dough. 3. Spread tomato sauce. 4. Add mozzarella. 5. Bake for 15 minutes.",
+    "ingredientIds": [
+      "6a1b76afe1b66a59abf8ad30",
+      "6a1b76afe1b66a59abf8ad35",
+      "6a1b76afe1b66a59abf8ad36"
+    ]
+}
+
+### Delete Recipe
+DELETE http://localhost:3000/recipes/6a1b76d2e1b66a59abf8ad39
+
+###
+
+### Get All Ingredients
+GET http://localhost:3000/ingredients
+
+### Get Ingredient by ID
+GET http://localhost:3000/ingredients/6a1b76afe1b66a59abf8ad30
+
+### Create Ingredient
+POST http://localhost:3000/ingredients
+Content-Type: application/json
+
+{
+  "name": "Parmesan Cheese",
+  "unit": "grams",
+  "calories": 431
+}
+
+### Update Ingredient
+PUT http://localhost:3000/ingredients/6a1b76afe1b66a59abf8ad30
+Content-Type: application/json
+
+{
+  "name": "All-Purpose Flour",
+  "unit": "grams",
+  "calories": 455
+}
+
+### Delete Ingredient
+DELETE http://localhost:3000/ingredients/6a1b76afe1b66a59abf8ad30
