@@ -6,7 +6,7 @@ const doc = {
     description: "REST API for managing recipes and ingredients",
     version: "1.0.0",
   },
-  host: "cse341-project2-l8lq.onrender.com/",
+  host: "cse341-project2-l8lq.onrender.com",
   schemes: ["http"],
   consumes: ["application/json"],
   produces: ["application/json"],
