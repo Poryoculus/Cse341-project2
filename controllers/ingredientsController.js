@@ -105,6 +105,7 @@ const updateIngredient = async (req, res) => {
         .status(400)
         .json({ error: "Validation failed", details: errors });
     }
+    const db = getDb().db("RecipesBook");
     const result = await db
       .collection("ingredients")
       .findOneAndUpdate(
@@ -112,7 +113,6 @@ const updateIngredient = async (req, res) => {
         { $set: { ...req.body, updatedAt: new Date() } },
         { returnDocument: "after" },
       );
-
     if (!result || !result.value) {
       return res.status(404).json({ error: "Ingredient not found" });
     }
@@ -123,7 +123,6 @@ const updateIngredient = async (req, res) => {
       .json({ error: "Failed to update ingredient", details: err.message });
   }
 };
-
 const deleteIngredient = async (req, res) => {
   // #swagger.tags = ['Ingredients']
   // #swagger.summary = 'Delete an ingredient by ID'
