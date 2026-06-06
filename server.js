@@ -5,11 +5,26 @@ const app = express();
 const port = process.env.PORT || 3000;
 const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./swagger-output.json");
+const passport = require("passport");
+const session = require("express-session");
+require("./config/passport");
 
 // Middleware
 app.use(express.json());
 app.use(bodyParser.json());
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
+//session
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUnitialized: false,
+  }),
+);
+
+//passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // CORS headers
 app.use((req, res, next) => {
@@ -24,6 +39,9 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+//Swagger
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // Routes
 app.use("/", require("./routes"));
